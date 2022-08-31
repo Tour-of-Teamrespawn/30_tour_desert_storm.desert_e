@@ -1,0 +1,150 @@
+// ======================
+// Loading screen related
+// ======================
+#ifndef LOADSCREENTEXT
+#define LOADSCREEN "main\img\loading_screen.paa"
+#endif
+
+#ifndef LOADSCREENTEXT
+#define LOADSCREENTEXT $STR_MISSIONNAME
+#endif
+
+class RscText {
+	idc = -1; 
+	type = CT_STRUCTURED_TEXT; 
+	style = ST_LEFT;
+	colorBackground[] = { 0, 0, 0, 0 };
+	x = 0.5; 
+	y = 0.5; 
+	w = 0.5; 
+	h = 0.5;
+	size = "(safeZoneX / 18) + (safeZoneW / 18)";
+	text = "";
+	class Attributes 
+	{ 
+		font = "Zeppelin33Italic"; 
+		color = "#C0C0C0"; 
+		align = "center"; 
+		valign = "middle"; 
+		shadow = true; 
+		shadowColor = "#000000";
+		size = "1"; 
+	};
+};
+
+class RscLoadingText : RscText
+{
+  x =  SafezoneX+0.025;
+  y = SafezoneY;
+  w = SafezoneW*0.95;
+  h = SafezoneH*0.075;
+  sizeEx = 0.05;
+  text = "";
+  colorText[] = { 1,1,0.8,1};
+  shadow = 2;
+};
+
+class RscProgress
+{
+    idc = 104;
+    type = 8;
+    style = 0;
+    shadow = 2;
+    texture = "\ca\ui\data\loadscreen_progressbar_ca.paa";
+    colorFrame[] = { 0,0,0,0};
+    colorBar[] = { 1,1,1,1};
+    x =  (SafezoneX+(SafezoneW -SafezoneH*3/4)/2)+ (0.5/2/4)*3*SafezoneH;
+    y = SafezoneY+SafezoneH*0.95;
+    w =0.5* (((SafezoneW*3)/4)/SafezoneW)/(1/SafezoneH);
+    h = 0.0261438;
+};
+
+class RscProgressNotFreeze
+{
+	idc = -1;
+	type = 45;
+	style = 0;
+	
+	x = 0.022059;
+	y = 0.911772;
+	w = 0.029412;
+	h = 0.039216;
+	
+	texture = "#(argb,8,8,3)color(0,0,0,0)";
+};
+
+class RscLoadingBg : RscText
+{ 
+	x = SafeZoneXAbs; 
+	y = safezoneY; 
+	w = SafeZoneWAbs; 
+	h = safezoneH; 
+	text = ""; 
+	colorText[] = { 0,0,0,0}; 
+	colorBackground[] = { 0,0,0,1}; 
+}; 
+
+class RscPicture {
+	type = 0;
+	idc = -1;
+	style = 48;
+	colorText[] = {0.75, 0.75, 0.75, 1};
+	colorBackground[] = {0, 0, 0, 0};
+	font = "Bitstream";
+	sizeEx = 0.025;
+	soundClick[] = {WFBE_SoundClick, 0.2, 1};
+	soundEnter[] = {WFBE_SoundEnter, 0.2, 1};
+	soundEscape[] = {WFBE_SoundEscape, 0.2, 1};
+	soundPush[] = {"", 0.2, 1};
+	w = 0.275;
+	h = 0.04;
+	text = "";
+};
+
+class RscLoadingPicture: RscPicture
+{ 
+ style = 48 + 0x800; // Keep aspect ratio
+  x =  SafezoneX; 
+  y = SafezoneY+SafezoneH*0.075; 
+  w = SafezoneW; 
+  h = SafezoneH*0.85; 
+  text = ""; 
+}; 
+class RscLoadScreenCustom
+{ 
+	idd = -1; 
+	duration = 10e10; 
+	fadein = 0; 
+	fadeout = 0; 
+	name = "Loading Screen";
+
+	class ControlsBackground
+	{ 
+		class Loading_BG : RscLoadingBg
+		{ 
+			font = "Bitstream";
+			sizeEx = 0.025;
+		}; 
+		class Loading_CE2 : RscLoadingPicture
+		{ 
+			text = LOADSCREEN; 
+		}; 
+	}; 
+	
+	class controls
+	{ 
+		class Title1 : RscLoadingText
+		{ 
+			text = LOADSCREENTEXT;
+			font = "Bitstream";
+		}; 
+		class CA_Progress : RscProgress
+		{ 
+
+		};
+		class CA_Progress2 : RscProgressNotFreeze
+		{
+			idc = 103;
+		}; 
+	}; 
+}; 

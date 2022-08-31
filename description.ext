@@ -1,0 +1,223 @@
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 30;
+};
+
+
+author = "Kain_Lowsta";
+onLoadName = "30 [Tour] Desert Storm";
+briefingName = "30 [Tour] Desert Storm v1.04";
+OnLoadMission = "Defend F.O.B Storm";
+OnLoadMissionTime = false;
+
+loadScreen = "main\img\loading_screen.paa";
+#include "main\loading_screen.ext"
+
+enableItemsDropping = 0;
+enableDebugConsole = 1;
+saving = 0;
+disabledAI = 1;
+
+//respawn control
+respawn = 3;
+respawnDelay = 30;
+respawnDialog = 1;
+respawnTemplates[] = {"tickets"};
+respawnVehicleDelay = 30;
+#include "scripts\TOUR_RC\dialog\hpp\admintool.hpp"
+
+//#include "scripts\TOUR_FieldRadio\TOUR_FieldRadio.hpp"
+#include "main\radio_resource.hpp"
+
+//class RscTitles
+//{	
+	//#include "scripts\TOUR_name_recog\TOUR_name_recog.hpp"
+//};
+
+class CfgSounds
+{
+	sounds[] = {};
+	#include "sounds\sounds.hpp"
+};
+
+class CfgRadio
+{
+	sounds[] = {};
+	#include "sounds\directChat.hpp"
+	#include "sounds\sideChat.hpp"
+};
+
+class Params
+{
+        class TOUR_param_Respawn
+		{
+			//paramsArray[0]
+			title = "Respawn Time (s):";
+			values[] = {0, 30, 60, 300, 600, 900};
+			default = 30;
+			texts[] = {"None", "30 Seconds", "1 Minute", "5 Minutes", "10 Minutes", "15 Minutes"};
+		};
+		class TOUR_param_tickets
+		{
+			//paramsArray[1]
+			title = "Lives:";
+			values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 100};
+			default = 1;
+			texts[] = {"1", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "20", "30", "40", "50", "100"};
+		};
+		class KAIN_par_quickStart 
+        {
+			title = "Debug Param: Officer Intro Dialogue:";
+			values[] = {0, 1};
+			default = 0;
+			texts[] = {"Enabled", "Disabled"};
+        };
+		class KAIN_par_debug 
+        {
+			title = "Debug Param: Enemy Spawn Distance:";
+			values[] = {0, 1};
+			default = 0;
+			texts[] = {"Unknown", "Very Close"};
+        };
+		class KAIN_par_attackDelay 
+        {
+			title = "Debug Param: Initial Attack Delay:";
+			values[] = {0, 1, 2, 3, 4};
+			default = 0;
+			texts[] = {"Unknown", "5 Mins", "60 secs", "0 secs", "Never Attack"};
+        };
+		class KAIN_par_attackFrequency 
+        {
+			title = "Debug Param: Attack Frequency:";
+			values[] = {0, 1};
+			default = 0;
+			texts[] = {"Unknown", "Rapid"};
+        };
+		class KAIN_par_invincibility 
+        {
+			title = "Debug Param: Debug tools:";
+			values[] = {0, 1};
+			default = 0;
+			texts[] = {"OFF", "ON"};
+        };
+		class KAIN_par_dutyLength 
+        {
+			title = "Debug Param: Length of Mission:";
+			values[] = {0, 1, 2, 3, 4};
+			default = 0;
+			texts[] = {"Full", "30 Mins", "10 Mins", "5 min", "End Immediately"};
+        };
+}; 
+
+class CfgIdentities
+{
+	//Officer - Marlboro
+	class Damek
+	{
+		name = "Officer Damek";
+		face = "GreekHead_A3_03";
+		glasses = "G_Aviator";
+		speaker = "Male01GRE";
+		pitch = 1;
+	};
+	
+	//Team Leader - OLO
+	class Vilem
+	{
+		name = "Lt. Vilem";
+		face = "WhiteHead_18";
+		glasses = "G_Aviator";
+		speaker = "Male03GRE";
+		pitch = 1;
+	};
+};
+
+
+class CfgFunctions
+{
+	
+	class TOUR
+	{
+		class functions
+		{
+			class directSay
+			{
+				file = "scripts\TOUR_functions\fn_directSay.sqf";
+			};
+			class restrictVehicles
+			{
+				file = "scripts\TOUR_functions\fn_restrictVehicles.sqf";
+			};
+			class sideRadio
+			{
+				file = "scripts\TOUR_functions\fn_sideRadio.sqf";
+			};
+			class timeSyncMP
+			{
+				file = "scripts\TOUR_functions\fn_timeSyncMP.sqf";
+			};
+			class weatherSyncMP
+			{
+				file = "scripts\TOUR_functions\fn_weatherSyncMP.sqf";
+			};
+		};
+	};
+};
+
+class CfgDebriefing 
+{
+	class playersdead
+	{
+		title = "Defeated";
+		subtitle = "Bishop-One KIA";
+		description = "After fighting valliantly to the last man, The team was eliminated and F.O.B. Storm was lost to the enemy.";
+		picture = "KIA";
+		pictureColor[] = {0,0,0,1};
+	};
+	class overrun
+	{
+		title = "FOB over-run";
+		subtitle = "Mission Failed";
+		description = "Some of the platoon survived the attack but with the area swarming with enemy, reinforcements were unable to land. The remaining men were left at the mercy of the Takistanis.";
+		picture = "";
+		pictureColor[] = {0,0,0,1};
+	};
+	class aborted
+	{
+		title = "Mission Aborted";
+		subtitle = "";
+		description = "Bishop-One abandon thier post, barely making it out alive. Taking the cowards way out kept them alive, but HQ were not impressed.";
+		picture = "";
+		pictureColor[] = {0,0,0,1};
+	};
+	class win
+	{
+		title = "Mission Complete";
+		subtitle = "";
+		description = "Bishop-One were able to overcome all the odds, and defend FOB Storm. Upon returning to HQ, the commanders looked on shocked... We honestly never expected you'd come back alive. Excellent work!";
+		picture = "";
+		pictureColor[] = {0,0,0,1};
+	};
+};
+
+
+class CfgRemoteExec
+{
+	// List of script functions allowed to be sent from client via remoteExec
+	class Functions
+	{
+		mode = 2;
+		jip = 1;		
+		
+		class vcm_serverask { allowedTargets = 0;jip = 1; };
+		class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+		class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
+		class SpawnScript { allowedTargets = 0;jip = 1; };
+		class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
+		
+	};
+};
+

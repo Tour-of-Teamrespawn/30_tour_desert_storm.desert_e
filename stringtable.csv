@@ -1,0 +1,35 @@
+//=============================================================================================================
+//StringTable.csv
+//=============================================================================================================
+
+Language,				"English"
+
+//MISSION NAME
+STR_MISSIONNAME,		"DESERT STORM"
+
+//TASKS
+STR_TASK_0_TEXT,		"<br/>- Hold F.O.B. Storm until replacements arrive<br/><br/>"
+STR_TASK_0_TITLE,		"Hold F.O.B. Storm"
+STR_TASK_0_HUD,			"F.O.B. Storm"
+STR_TASK_1_TEXT,		"<br/>- Rescue Falcon 1 pilot that was shot down while providing close air support over F.O.B. Storm<br/><br/>"
+STR_TASK_1_TITLE,		"Rescue Pilot"
+STR_TASK_1_HUD,			"Pilot"
+STR_TASK_2_TEXT,		"<br/>- Report at main bunker<br/><br/>"
+STR_TASK_2_TITLE,		"Report At Bunker"
+STR_TASK_2_HUD,			"Report"
+STR_TASK_3_TEXT,		"<br/>- Leave F.O.B. Storm<br/><br/>"
+STR_TASK_3_TITLE,		"Leave F.O.B."
+STR_TASK_3_HUD,			"F.O.B. Storm"
+
+//NOTES
+STR_NOTE_1_TITLE,		"Mission"
+STR_NOTE_1_TEXT,		"<br/>- Repel any enemy attempt to seize the F.O.B.<br/><br/>- Another team will replace you once your shift is finished.<br/>"
+STR_NOTE_2_TITLE,		"Intel"
+STR_NOTE_2_TEXT,		"<br/>The base has suffered several attacks in that last 48h.<br/>Because of its strategic position the Takistan Army is making all they can to take it although, we belive the worse is yet to come.<br/>Their actions make us belive that they have been testing the Base defenses, and we are to expect a big attack in a near future.<br/><br/>Take note that the F.O.B. Storm is situated in the middle of the desert and far from any other military base, so radio comms between stations need to be made through the Satellite Radio in the main bunker.<br/><br/>Another problem you may find its the weather, in these last couple of weeks F.O.B. Storm has been suffering from heavy sand storms. Sometimes not much noticeble but, sometimes it can really blind. Just be careful, the enemy may take advantage from it.<br/><br/>Officer Damek will brief you before he leaves.<br/>"
+STR_NOTE_3_TITLE,		"Satellite Radio"
+STR_NOTE_3_TEXT,		"<br/>Bishop-One has at their disposal a Satellite Radio in the main bunker that can be used to:<br/><br/>-Communicate with HQ and other friendly units<br/>-Request Close Air Support/Send Close Air Support to RTB<br/>-Request EVAC (Abort Mission)<br/>"
+
+//Custom Notes
+STR_NOTECUSTOM_00, 		"About"
+STR_NOTECUSTOM_01, 		"Credits"
+STR_NOTECUSTOM_02, 		"<br/><br/>Ported to A3: Kain_Lowsta<br/><br/>Original Concept: _neo_<br/><br/>Voice Acting: Marlboro as Officer Damek, OLO as Lt. Vilem and _neo_ as CAS pilot<br/><br/>Deadfast for Name Recognition and Multitask and all Tour members for testing and feedback<br/><br/>"

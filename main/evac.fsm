@@ -1,0 +1,583 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, evac">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"create",3,4346,-30.927708,130.492462,59.072292,180.492462,0.000000,"create"};
+item1[] = {"chopper_near_FOB",4,218,-31.459795,224.113632,58.540207,274.113617,0.000000,"chopper near" \n "FOB"};
+item2[] = {"_",2,250,-31.611961,319.695343,58.388054,369.695343,0.000000,""};
+item3[] = {"dead",4,218,-228.838470,551.180115,-138.838440,601.180115,1.000000,"dead"};
+item4[] = {"ready_to_land",4,218,-31.266914,441.771790,58.733070,491.771790,0.000000,"ready to" \n "land"};
+item5[] = {"END2",1,250,-381.671722,551.180115,-291.671692,601.180115,0.000000,"END2"};
+item6[] = {"__1",2,250,-31.473969,551.949829,58.526031,601.949829,0.000000,""};
+item7[] = {"all_in",4,218,-30.412140,668.716675,59.587860,718.716675,0.000000,"all" \n "in"};
+item8[] = {"__2",2,250,-30.247269,775.920654,59.752754,825.920654,0.000000,""};
+item9[] = {"ready_at_end",4,218,-30.293999,860.265320,59.706017,910.265320,0.000000,"ready at" \n "end"};
+item10[] = {"END1",1,250,-30.293945,941.722229,59.706085,991.722229,0.000000,"END1"};
+item11[] = {"Define_Loadout",0,250,-30.846619,-59.163094,59.153316,-9.163094,0.000000,"Define Loadout"};
+item12[] = {"valid",4,218,-31.537434,32.588043,58.462521,82.588074,0.000000,"valid"};
+item13[] = {"not_valid",4,218,-30.131060,-146.758591,59.868942,-96.758591,200.000000,"not valid"};
+item14[] = {"EXIT",1,250,-29.427769,-232.563644,60.572258,-182.563660,0.000000,"EXIT"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {3,5};
+link5[] = {4,6};
+link6[] = {6,3};
+link7[] = {6,7};
+link8[] = {7,8};
+link9[] = {8,3};
+link10[] = {8,9};
+link11[] = {9,10};
+link12[] = {11,12};
+link13[] = {11,13};
+link14[] = {12,0};
+link15[] = {13,14};
+globals[] = {0.000000,0,0,0,0,640,480,1,18,6316128,1,-445.089996,247.055908,1029.090454,-210.242035,1060,1898,1};
+window[] = {2,-1,-1,-1,-1,889,152,1412,152,3,1087};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "evac";
+        class States
+        {
+                /*%FSM<STATE "create">*/
+                class create
+                {
+                        name = "create";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_posLand"", ""_posSpawn"", ""_posEnd"", ""_grpLeader"", ""_grp""];" \n
+                         "_posLand = getPos NEO_basePosition;" \n
+                         "_posSpawn = ([_posLand, 5000, 45] call BIS_fnc_relPos);" \n
+                         "_posSpawn set [2, 100];" \n
+                         "_posEnd = _posSpawn;" \n
+                         "_grpLeader = grpNull;" \n
+                         "_grp = grpNull;" \n
+                         "" \n
+                         "private [""_chopperArray"", ""_chopper"", ""_chopperCrew"", ""_grpWest""];" \n
+                         "//_chopperArray = [_posSpawn, 180, ""UK3CB_BAF_Chinook_HC2_DDPM"", WEST] call bis_fnc_spawnvehicle;" \n
+                         "_chopper = createVehicle [""UK3CB_BAF_Chinook_HC2_DDPM"", _posSpawn, [], 0, ""FLY""];" \n
+                         "_grpWest = [_posSpawn, WEST, [""UK3CB_ADA_B_HELI_PILOT""]] call BIS_fnc_spawnGroup;" \n
+                         "_gunners = [_posSpawn, WEST, [""UK3CB_ADA_B_HELI_PILOT"", ""UK3CB_ADA_B_HELI_PILOT"", ""UK3CB_ADA_B_HELI_PILOT""]] call BIS_fnc_spawnGroup;" \n
+                         "" \n
+                         "{_x moveInDriver _chopper} forEach units _grpWest;" \n
+                         "{[_x] call TOUR_fnc_desertStormUniform; _x moveInAny _chopper} forEach units _gunners;" \n
+                         "_chopperCrew = (units _gunners) + (units _grpWest);  " \n
+                         "//_grpWest = createVehicleCrew _chopper;" \n
+                         "//_chopperCrew = units _chopper;" \n
+                         "" \n
+                         "" \n
+                         "//_chopper = _chopperArray select 0;" \n
+                         "//_chopperCrew = _chopperArray select 1;" \n
+                         "//_grpWest = _chopperArray select 2;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "_chopper setVelocity [0,0,0];" \n
+                         "_chopper flyInHeight 30;" \n
+                         "{ _chopper setSkill [_x, 1] } forEach [""aimingAccuracy"", ""aimingShake"", ""aimingSpeed"", ""endurance"", ""spotDistance"", ""spotTime"", ""courage"", ""reloadSpeed"", ""commanding"", ""general""];" \n
+                         "_chopper lockDriver true;" \n
+                         "_chopper disableAi ""TARGET"";" \n
+                         "_chopper disableAi ""AUTOTARGET"";" \n
+                         "_chopper setCaptive true;" \n
+                         "_grpWest setBehaviour ""CARELESS"";" \n
+                         "_grpWest setCombatMode ""BLUE"";" \n
+                         "_grpWest setSpeedMode ""FULL"";" \n
+                         "_grpWest enableAttack false;" \n
+                         "if (!isNil { NEO_debugOn }) then { [_chopper, 0, ""ICON"", ""BORDER"", ""mil_dot"", ""EVAC"", [0.75, 0.75], ""ColorYellow"", true] call NEO_fnc_createMarker };" \n
+                         "" \n
+                         "//MOVE" \n
+                         "_chopper move _posLand;" \n
+                         "" \n
+                         "//Create Chopper Crew" \n
+                         "if (NEO_coreLogic getVariable ""NEO_baseRadio_missionCompleted"") then" \n
+                         "{" \n
+                         "	_grpLeader = [_posSpawn, WEST, [""O_Soldier_SL_F""]] call BIS_fnc_spawnGroup;" \n
+                         "	_grp = [_posSpawn, WEST, [""O_HeavyGunner_F"", ""O_soldier_LAT_F"", ""O_Soldier_F"", ""O_Soldier_F"", ""O_Soldier_F"", ""O_soldier_AR_F"", ""O_Soldier_GL_F"", ""O_soldier_AR_F"", ""O_soldier_LAT_F"", ""O_Soldier_F"", ""O_Soldier_F"", ""O_Soldier_F"", ""O_HeavyGunner_F"", ""O_Soldier_GL_F""]] call BIS_fnc_spawnGroup;" \n
+                         "	" \n
+                         "	//{" \n
+                         "		//if (_x != driver _chopper) then " \n
+                         "		//{" \n
+                         "			//moveOut _x;" \n
+                         "			//[_x] call TOUR_fnc_desertStormUniform;" \n
+                         "			//_x moveInAny _chopper;" \n
+                         "		//};" \n
+                         "	//} forEach _chopperCrew;" \n
+                         "	" \n
+                         "	{ " \n
+                         "		[_x] call TOUR_fnc_desertStormUniform;" \n
+                         "		_x moveInCargo _chopper;" \n
+                         "	} forEach (units _grpLeader) + (units _grp);" \n
+                         "};" \n
+                         "	" \n
+                         "" \n
+                         "[" \n
+                         "	_chopper, " \n
+                         "	[""Pilot, we are good to go"", ""main\evac_action.sqf"", [], -1, true, true, """", " \n
+                         "	""" \n
+                         "		(_this == leader group _this)" \n
+                         "		&&" \n
+                         "		(_this in _target)" \n
+                         "		&&" \n
+                         "		(" \n
+                         "			(!isNil { NEO_coreLogic getVariable """"NEO_commandGiven"""" })" \n
+                         "			||" \n
+                         "			(NEO_coreLogic getVariable """"NEO_baseRadio_missionAborted"""")" \n
+                         "		)" \n
+                         "	""]" \n
+                         "] remoteExec [""addAction"", 0, true];" \n
+                         "" \n
+                         "_chopper addEventHandler [""HandleDamage"", " \n
+                         "{" \n
+                         "	if (!local (_this select 0)) exitWith {};" \n
+                         "	if (random 1 > 0.7 && (canMove (_this select 0)) && (alive (driver (_this select 0))) && isNil { NEO_coreLogic getVariable ""NEO_chopperTakingFire"" }) then" \n
+                         "	{" \n
+                         "		NEO_coreLogic setVariable [""NEO_chopperTakingFire"", true];" \n
+                         "		(_this select 0) removeAllEventHandlers ""HandleDamage"";" \n
+                         "		" \n
+                         "		[" \n
+                         "			[], " \n
+                         "			{" \n
+                         "				enableRadio true;" \n
+                         "				enableSentences true;" \n
+                         "				sleep 2;" \n
+                         "				NEO_EVACradio sideRadio ""NEO_speech_21"";" \n
+                         "				sleep 10;" \n
+                         "				enableSentences false;" \n
+                         "				enableRadio false;" \n
+                         "			}" \n
+                         "		] remoteExec [""spawn"", 0, false];" \n
+                         "	};" \n
+                         "" \n
+                         "	_this select 2;" \n
+                         "}];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "chopper_near_FOB">*/
+                                class chopper_near_FOB
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_chopper distance _posLand < 750" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[" \n
+                                         "	[]," \n
+                                         "	{ " \n
+                                         "		enableRadio true;" \n
+                                         "		enableSentences true;" \n
+                                         "		sleep 2;" \n
+                                         "		NEO_EVACradio sideRadio ""NEO_speech_18"";" \n
+                                         "		sleep 10;" \n
+                                         "		enableSentences false;" \n
+                                         "		enableRadio false;" \n
+                                         "	}" \n
+                                         "] remoteExec [""spawn"", 0, false];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="END2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _chopper" \n
+                                         "||" \n
+                                         "!canMove _chopper" \n
+                                         "||" \n
+                                         "!alive driver _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[] spawn" \n
+                                         "{" \n
+                                         "	[" \n
+                                         "		[]," \n
+                                         "		{" \n
+                                         "			enableRadio true;" \n
+                                         "			enableSentences true;" \n
+                                         "			sleep 2;" \n
+                                         "			NEO_EVACradio sideRadio ""NEO_speech_19"";" \n
+                                         "			sleep 10;" \n
+                                         "			enableSentences false;" \n
+                                         "			enableRadio false;" \n
+                                         "		}" \n
+                                         "	] remoteExec [""spawn"", 0, false];" \n
+                                         "" \n
+                                         "	sleep 5;" \n
+                                         "" \n
+                                         "	if (NEO_coreLogic getVariable ""NEO_baseRadio_missionCompleted"") then" \n
+                                         "	{" \n
+                                         "		""win"" call BIS_fnc_endMissionServer" \n
+                                         "	}" \n
+                                         "	else" \n
+                                         "	{" \n
+                                         "		""aborted"" call BIS_fnc_endMissionServer" \n
+                                         "	};" \n
+                                         "	" \n
+                                         "	NEO_spec = nil;" \n
+                                         "	publicVariable ""NEO_spec"";" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ready_to_land">*/
+                                class ready_to_land
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"unitReady _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setCaptive false;" \n
+                                         "" \n
+                                         "if (NEO_coreLogic getVariable ""NEO_baseRadio_missionCompleted"") then" \n
+                                         "{" \n
+                                         "	_chopper land ""LAND"";" \n
+                                         "" \n
+                                         "	[_chopper, _grp, _grpLeader] spawn" \n
+                                         "	{" \n
+                                         "		private [""_chopper"", ""_grp"", ""_grpLeader""];" \n
+                                         "		_chopper = _this select 0;" \n
+                                         "		_grp = _this select 1;" \n
+                                         "		_grpLeader = _this select 2;" \n
+                                         "		" \n
+                                         "		waitUntil { getPosATL _chopper select 2 < 20 };" \n
+                                         "		_chopper setCaptive true;" \n
+                                         "		waitUntil { (getPosATL _chopper select 2) < 3 };" \n
+                                         "		sleep 15;" \n
+                                         "		" \n
+                                         "		[leader _grpLeader] execVM ""main\outro_officer.sqf"";" \n
+                                         "		[_grp] execVM ""main\outro_group.sqf"";" \n
+                                         "	};" \n
+                                         "}" \n
+                                         "else" \n
+                                         "{" \n
+                                         "	_chopper land ""GET IN"";" \n
+                                         "	" \n
+                                         "	[""NEO_task_3"", {localize ""STR_TASK_3_TITLE""}] call A2S_createSimpleTask;" \n
+                                         "	[""NEO_task_3"", {localize ""STR_TASK_3_TEXT""}, {localize ""STR_TASK_3_TITLE""}, {localize ""STR_TASK_3_HUD""}] call A2S_setSimpleTaskDescription;" \n
+                                         "	[""NEO_task_3"", ""ASSIGNED""] call A2S_setTaskState;" \n
+                                         "	""NEO_task_3"" call A2S_taskCommit;" \n
+                                         "	[""NEO_task_3"", ""taskassigned""] call A2S_taskHint;" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END2">*/
+                class END2
+                {
+                        name = "END2";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="END2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _chopper" \n
+                                         "||" \n
+                                         "!canMove _chopper" \n
+                                         "||" \n
+                                         "!alive driver _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[] spawn" \n
+                                         "{" \n
+                                         "	[" \n
+                                         "		[]," \n
+                                         "		{" \n
+                                         "			enableRadio true;" \n
+                                         "			enableSentences true;" \n
+                                         "			sleep 2;" \n
+                                         "			NEO_EVACradio sideRadio ""NEO_speech_19"";" \n
+                                         "			sleep 10;" \n
+                                         "			enableSentences false;" \n
+                                         "			enableRadio false;" \n
+                                         "		}" \n
+                                         "	] remoteExec [""spawn"", 0, false];" \n
+                                         "" \n
+                                         "	sleep 5;" \n
+                                         "" \n
+                                         "	if (NEO_coreLogic getVariable ""NEO_baseRadio_missionCompleted"") then" \n
+                                         "	{" \n
+                                         "		""win"" call BIS_fnc_endMissionServer" \n
+                                         "	}" \n
+                                         "	else" \n
+                                         "	{" \n
+                                         "		""aborted"" call BIS_fnc_endMissionServer" \n
+                                         "	};" \n
+                                         "	" \n
+                                         "	NEO_spec = nil;" \n
+                                         "	publicVariable ""NEO_spec"";" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_in">*/
+                                class all_in
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil { NEO_coreLogic getVariable ""NEO_evacAllInside"" }" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper doMove _posEnd;" \n
+                                         "" \n
+                                         "if !(NEO_coreLogic getvariable ""NEO_baseRadio_missionCompleted"") then" \n
+                                         "{" \n
+                                         "	[""NEO_task_3"", ""SUCCEEDED""] call A2S_setTaskState;" \n
+                                         "	""NEO_task_3"" call A2S_taskCommit;" \n
+                                         "	[""NEO_task_3"", ""tasksucceeded""] call A2S_taskHint;" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__2">*/
+                class __2
+                {
+                        name = "__2";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"[" \n
+                         "	[], " \n
+                         "	{" \n
+                         "		enableRadio true;" \n
+                         "		enableSentences true;" \n
+                         "		sleep 2;" \n
+                         "		NEO_EVACradio sideRadio ""NEO_speech_20"";" \n
+                         "		sleep 10;" \n
+                         "		enableSentences false;" \n
+                         "		enableRadio false;" \n
+                         "	}" \n
+                         "] remoteExec [""spawn"", 0, false];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="END2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _chopper" \n
+                                         "||" \n
+                                         "!canMove _chopper" \n
+                                         "||" \n
+                                         "!alive driver _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[] spawn" \n
+                                         "{" \n
+                                         "	[" \n
+                                         "		[]," \n
+                                         "		{" \n
+                                         "			enableRadio true;" \n
+                                         "			enableSentences true;" \n
+                                         "			sleep 2;" \n
+                                         "			NEO_EVACradio sideRadio ""NEO_speech_19"";" \n
+                                         "			sleep 10;" \n
+                                         "			enableSentences false;" \n
+                                         "			enableRadio false;" \n
+                                         "		}" \n
+                                         "	] remoteExec [""spawn"", 0, false];" \n
+                                         "" \n
+                                         "	sleep 5;" \n
+                                         "" \n
+                                         "	if (NEO_coreLogic getVariable ""NEO_baseRadio_missionCompleted"") then" \n
+                                         "	{" \n
+                                         "		""win"" call BIS_fnc_endMissionServer" \n
+                                         "	}" \n
+                                         "	else" \n
+                                         "	{" \n
+                                         "		""aborted"" call BIS_fnc_endMissionServer" \n
+                                         "	};" \n
+                                         "	" \n
+                                         "	NEO_spec = nil;" \n
+                                         "	publicVariable ""NEO_spec"";" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ready_at_end">*/
+                                class ready_at_end
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="END1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_chopper distance _posLand > 1500" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if (NEO_coreLogic getVariable ""NEO_baseRadio_missionCompleted"") then" \n
+                                         "{" \n
+                                         "	if (!isNil { NEO_coreLogic getVariable ""NEO_pilotRescueStarted"" }) then" \n
+                                         "	{" \n
+                                         "		if (NEO_coreLogic getVariable ""NEO_pilotRescued"") then" \n
+                                         "		{" \n
+                                         "			""win"" call BIS_fnc_endMissionServer;" \n
+                                         "		}" \n
+                                         "		else" \n
+                                         "		{" \n
+                                         "			""win"" call BIS_fnc_endMissionServer;" \n
+                                         "		};" \n
+                                         "	}" \n
+                                         "	else" \n
+                                         "	{" \n
+                                         "		""win"" call BIS_fnc_endMissionServer;" \n
+                                         "	};" \n
+                                         "}" \n
+                                         "else" \n
+                                         "{" \n
+                                         "	""aborted"" call BIS_fnc_endMissionServer;" \n
+                                         "};" \n
+                                         "" \n
+                                         "NEO_spec = nil;" \n
+                                         "publicVariable ""NEO_spec"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END1">*/
+                class END1
+                {
+                        name = "END1";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Define_Loadout">*/
+                class Define_Loadout
+                {
+                        name = "Define_Loadout";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"TOUR_fnc_desertStormUniform = " \n
+                         "{" \n
+                         "	_x = _this select 0;" \n
+                         "	" \n
+                         "	removeAllWeapons _x;" \n
+                         "	removeAllItems _x;" \n
+                         "	removeAllAssignedItems _x;" \n
+                         "	removeUniform _x;" \n
+                         "	removeVest _x;" \n
+                         "	removeBackpack _x;" \n
+                         "	removeHeadgear _x;" \n
+                         "	removeGoggles _x;" \n
+                         "" \n
+                         "	_x addWeapon ""rhs_weap_savz58v_ris"";" \n
+                         "	_x addPrimaryWeaponItem ""UK3CB_BAF_LLM_Flashlight_Black"";" \n
+                         "	_x addPrimaryWeaponItem ""rhsusf_acc_T1_low_fwd"";" \n
+                         "	_x addPrimaryWeaponItem ""rhs_30Rnd_762x39mm_Savz58"";" \n
+                         "	_x addPrimaryWeaponItem ""rhsusf_acc_rvg_blk"";" \n
+                         "	_x addWeapon ""rhsusf_weap_glock17g4"";" \n
+                         "	_x addHandgunItem ""rhsusf_mag_17Rnd_9x19_JHP"";" \n
+                         "" \n
+                         "	_x forceAddUniform ""UK3CB_ADP_B_U_CombatUniform_ACC"";" \n
+                         "	_x addVest ""rhs_6b23_digi_6sh92_Vog_Spetsnaz"";" \n
+                         "	_x addBackpack ""B_AssaultPack_sgg"";" \n
+                         "" \n
+                         "	_x addWeapon ""Binocular"";" \n
+                         "" \n
+                         "	_x addItemToUniform ""ACE_EarPlugs"";" \n
+                         "	for ""_i"" from 1 to 2 do {_x addItemToUniform ""rhsusf_mag_17Rnd_9x19_JHP"";};" \n
+                         "	for ""_i"" from 1 to 5 do {_x addItemToVest ""ACE_fieldDressing"";};" \n
+                         "	for ""_i"" from 1 to 6 do {_x addItemToVest ""rhs_30Rnd_762x39mm_Savz58"";};" \n
+                         "	for ""_i"" from 1 to 3 do {_x addItemToVest ""rhs_mag_m67"";};" \n
+                         "	_x addItemToVest ""UK3CB_BAF_SmokeShell"";" \n
+                         "	_x addItemToBackpack ""ACE_epinephrine"";" \n
+                         "	_x addItemToBackpack ""ACE_morphine"";" \n
+                         "	for ""_i"" from 1 to 5 do {_x addItemToBackpack ""ACE_fieldDressing"";};" \n
+                         "	_x addItemToBackpack ""UK3CB_BAF_SmokeShellYellow"";" \n
+                         "	for ""_i"" from 1 to 6 do {_x addItemToBackpack ""rhs_30Rnd_762x39mm_Savz58"";};" \n
+                         "	_x addHeadgear ""rhsusf_lwh_helmet_marpatd"";" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "not_valid">*/
+                                class not_valid
+                                {
+                                        itemno = 13;
+                                        priority = 200.000000;
+                                        to="EXIT";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isServer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "valid">*/
+                                class valid
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="create";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "EXIT">*/
+                class EXIT
+                {
+                        name = "EXIT";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Define_Loadout";
+        finalStates[] =
+        {
+                "END2",
+                "END1",
+                "EXIT",
+        };
+};
+/*%FSM</COMPILE>*/

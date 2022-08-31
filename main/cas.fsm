@@ -1,0 +1,557 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, cas">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"create",3,4346,-39.314381,-121.655533,50.685619,-71.655533,0.000000,"create"};
+item1[] = {"dead",4,218,-202.522537,229.963593,-112.522598,279.963562,10.000000,"dead"};
+item2[] = {"END2",1,250,-332.237152,229.879578,-242.237122,279.879517,0.000000,"END2"};
+item3[] = {"ready",4,218,112.802841,48.750618,202.802795,98.750633,0.000000,"ready"};
+item4[] = {"at_base",4,218,-39.455376,315.364594,50.544624,365.364594,0.000000,"at base"};
+item5[] = {"rtb",4,218,-38.749481,135.357361,51.250496,185.357376,2.000000,"rtb"};
+item6[] = {"chopper_near_FOB",4,218,-38.698757,-38.174828,51.301243,11.825155,0.000000,"chopper near" \n "FOB"};
+item7[] = {"_",2,250,-38.749470,48.641018,51.250546,98.641014,0.000000,""};
+item8[] = {"__1",3,250,-38.800140,230.644455,51.199860,280.644440,0.000000,""};
+item9[] = {"END1",1,250,-38.553200,392.015656,51.446922,442.015656,0.000000,"END1"};
+item10[] = {"far",4,218,-128.145538,118.764229,-62.459793,151.995819,1.000000,"far"};
+item11[] = {"__2",2,250,-125.596893,56.904575,-64.103226,91.813004,0.000000,""};
+item12[] = {"near",4,218,-127.257057,-11.562330,-62.409721,26.699770,0.000000,"near"};
+item13[] = {"",7,210,-161.706879,70.362701,-153.706879,78.362755,0.000000,""};
+item14[] = {"not_valid",4,218,-39.494049,-376.451019,50.505959,-326.451019,200.000000,"not valid"};
+item15[] = {"EXIT",1,250,-40.315769,-457.803040,49.684261,-407.802979,0.000000,"EXIT"};
+item16[] = {"react",0,250,-40.315651,-290.168762,49.684349,-240.168762,0.000000,"react"};
+item17[] = {"valid",4,218,-40.315655,-204.708084,49.684345,-154.708084,0.000000,"valid"};
+link0[] = {0,6};
+link1[] = {1,2};
+link2[] = {3,7};
+link3[] = {4,9};
+link4[] = {5,8};
+link5[] = {6,7};
+link6[] = {7,3};
+link7[] = {7,5};
+link8[] = {7,10};
+link9[] = {7,13};
+link10[] = {8,1};
+link11[] = {8,4};
+link12[] = {10,11};
+link13[] = {11,12};
+link14[] = {11,13};
+link15[] = {12,7};
+link16[] = {13,1};
+link17[] = {14,15};
+link18[] = {16,14};
+link19[] = {16,17};
+link20[] = {17,0};
+globals[] = {0.000000,0,0,0,0,640,480,1,31,6316128,1,-443.545410,329.506958,574.223877,-700.884521,542,894,1};
+window[] = {2,-1,-1,-1,-1,867,130,1390,130,3,560};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "cas";
+        class States
+        {
+                /*%FSM<STATE "create">*/
+                class create
+                {
+                        name = "create";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "" \n
+                         "private [""_posCas"", ""_posSpawn"", ""_posExit"", ""_dirCas""];" \n
+                         "_posCas = getPos NEO_basePosition;" \n
+                         "_posSpawn = [NEO_basePosition, 5000, (random 360)] call BIS_fnc_relPos; _posSpawn set [2, 30];" \n
+                         "_posExit = _posSpawn;" \n
+                         "_dirCas = 0;" \n
+                         "" \n
+                         "private [""_chopperArray"", ""_chopper"", ""_crew"", ""_grp""];" \n
+                         "_chopperArray = [_posSpawn, ([_posSpawn, _posCas] call BIS_fnc_dirTo), ""UK3CB_BAF_Apache_AH1_CAS_Arctic"", WEST] call bis_fnc_spawnvehicle;" \n
+                         "_chopper = _chopperArray select 0;" \n
+                         "_crew = _chopperArray select 1;" \n
+                         "_grp = _chopperArray select 2;" \n
+                         "TOUR_chopper = _chopper;" \n
+                         "" \n
+                         "//_chopper = TOUR_CAS;" \n
+                         "//_crew = crew TOUR_CAS;" \n
+                         "//_grp = group TOUR_CAS;" \n
+                         "_topSpeed = 11;" \n
+                         "_chopper setPos _posSpawn;" \n
+                         "_chopper setDir ([_posSpawn, _posCas] call BIS_fnc_dirTo);" \n
+                         "" \n
+                         "_grp enableAttack false;" \n
+                         "_chopper lockDriver true;" \n
+                         "_chopper lock true;" \n
+                         "_chopper flyInHeight 30;" \n
+                         "_chopper setVelocity [0,0,0];" \n
+                         "_chopper disableAi ""TARGET"";" \n
+                         "_chopper disableAi ""AUTOTARGET"";" \n
+                         "_chopper setBehaviour ""CARELESS"";" \n
+                         "_chopper setCombatMode ""BLUE"";" \n
+                         "_chopper setSpeedMode ""FULL"";" \n
+                         "_chopper setFuel 0.65;" \n
+                         "//_chopper setHit [""engine_hit"", 0.6];" \n
+                         "_chopper allowDamage false;" \n
+                         "_chopper disableTIEquipment true;" \n
+                         "_chopper setCaptive true;" \n
+                         "_chopper enableSimulation true;" \n
+                         "{_x setCaptive true;} forEach _crew;" \n
+                         "" \n
+                         "" \n
+                         "//_chopper setVariable [""ace_cookoff_enable"", false, true]; not working inside fsm" \n
+                         "" \n
+                         "//{" \n
+                         "	//_chopper removeMagazinesTurret [_x ,[0]];" \n
+                         "//} forEach [/*""250Rnd_30mm_HE_shells_Tracer_Green"", */""PylonRack_4Rnd_LG_scalpel"", ""PylonRack_4Rnd_LG_scalpel"", ""PylonRack_19Rnd_Rocket_Skyfire"", ""PylonRack_19Rnd_Rocket_Skyfire""];" \n
+                         "" \n
+                         "{" \n
+                         "	_x setSkill 0.7;" \n
+                         "	_x setSkill [""courage"",1];" \n
+                         "	_x setSkill [""aimingAccuracy"",0.3];" \n
+                         "} forEach (units _grp);" \n
+                         "" \n
+                         "if (!isNil { NEO_debugOn }) then { [_chopper, 0, ""ICON"", ""BORDER"", ""mil_dot"", ""CAS"", [0.75, 0.75], ""ColorYellow"", true] call NEO_fnc_createMarker };" \n
+                         "" \n
+                         "_chopper doMove ([_posCas, 150, _dirCas] call BIS_fnc_relPos);" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "chopper_near_FOB">*/
+                                class chopper_near_FOB
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_chopper distance _posCas < 300" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setCaptive false;" \n
+                                         "{_x setCaptive false} forEach _crew;" \n
+                                         "_chopper setBehaviour ""COMBAT"";" \n
+                                         "_chopper setCombatMode ""RED"";" \n
+                                         "" \n
+                                         "_grp enableAttack true;" \n
+                                         "_chopper enableAi ""TARGET"";" \n
+                                         "_chopper enableAi ""AUTOTARGET"";" \n
+                                         "" \n
+                                         "_chopper forceSpeed _topSpeed;" \n
+                                         "" \n
+                                         "[[]," \n
+                                         "{" \n
+                                         "	enableRadio true;" \n
+                                         "	enableSentences true;" \n
+                                         "	sleep 2;" \n
+                                         "	NEO_CASradio sideRadio ""NEO_speech_12"";" \n
+                                         "	sleep 10;" \n
+                                         "	enableSentences false;" \n
+                                         "	enableRadio false;" \n
+                                         "	" \n
+                                         "}] remoteExec [""spawn"", 0, false];" \n
+                                         "" \n
+                                         "[_chopper] spawn " \n
+                                         "{" \n
+                                         "	sleep 12;" \n
+                                         "	(_this select 0) allowDamage true;" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END2">*/
+                class END2
+                {
+                        name = "END2";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "//Reveal Enemies" \n
+                         "{" \n
+                         "	if ((alive _x) && (!isPlayer _x) && (side _x == independent)) then" \n
+                         "	{" \n
+                         "		(group _chopper) reveal _x;" \n
+                         "	};" \n
+                         "} forEach (nearestObjects [(getPos NEO_basePosition), [""Man"", ""LandVehicle"", ""Air""], 200]);" \n
+                         "" \n
+                         "/*" \n
+                         "//Reveal Chopper" \n
+                         "{" \n
+                         "	if ((alive _x) && (!isPlayer _x) && (side _x == independent) && (_x == leader _x)) then" \n
+                         "	{" \n
+                         "		(group _x) reveal _chopper;" \n
+                         "	};" \n
+                         "} forEach (nearestObjects [(getPos NEO_basePosition), [""Man"", ""LandVehicle"", ""Air""], 250]);" \n
+                         "*/"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 1;
+                                        priority = 10.000000;
+                                        to="END2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _chopper" \n
+                                         "||" \n
+                                         "!canMove _chopper" \n
+                                         "||" \n
+                                         "!alive driver _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setDamage 1;" \n
+                                         "[_chopper] execVM ""main\pilot_rescue.sqf"";" \n
+                                         "NEO_coreLogic setVariable [""NEO_baseRadio_casDown"", true, true];" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "rtb">*/
+                                class rtb
+                                {
+                                        itemno = 5;
+                                        priority = 2.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"NEO_coreLogic getVariable ""NEO_baseRadio_casCancelled""" \n
+                                         "||" \n
+                                         "NEO_coreLogic getVariable ""NEO_heavyStorm""" \n
+                                         "||" \n
+                                         "(!someAmmo _chopper)" \n
+                                         "||" \n
+                                         "(fuel _chopper < 0.6)" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if (NEO_coreLogic getVariable ""NEO_baseRadio_casCancelled"") then " \n
+                                         "{" \n
+                                         "	[[]," \n
+                                         "	{" \n
+                                         "		enableRadio true;" \n
+                                         "		enableSentences true;" \n
+                                         "		sleep 2;" \n
+                                         "		NEO_CASradio sideRadio ""NEO_speech_16"";" \n
+                                         "		sleep 10;" \n
+                                         "		enableSentences false;" \n
+                                         "		enableRadio false;" \n
+                                         "	" \n
+                                         "	}] remoteExec [""spawn"", 0, false];" \n
+                                         "" \n
+                                         "} else {NEO_coreLogic setVariable [""NEO_baseRadio_casCancelled"", true, true];};" \n
+                                         "" \n
+                                         "" \n
+                                         "_chopper setCaptive true;" \n
+                                         "{_x setCaptive true} forEach _crew;" \n
+                                         "_chopper disableAi ""TARGET"";" \n
+                                         "_chopper disableAi ""AUTOTARGET"";" \n
+                                         "_chopper setBehaviour ""CARELESS"";" \n
+                                         "_chopper setCombatMode ""BLUE"";" \n
+                                         "_chopper forceSpeed -1;" \n
+                                         "_grp enableAttack false;" \n
+                                         "" \n
+                                         "_chopper doMove _posExit;" \n
+                                         "" \n
+                                         "if (!someAmmo _chopper) then " \n
+                                         "{" \n
+                                         "	[[]," \n
+                                         "	{" \n
+                                         "		enableRadio true;" \n
+                                         "		enableSentences true;" \n
+                                         "		sleep 2;" \n
+                                         "		NEO_CASradio sideRadio ""NEO_speech_13"";" \n
+                                         "		sleep 10;" \n
+                                         "		enableSentences false;" \n
+                                         "		enableRadio false;" \n
+                                         "	" \n
+                                         "	}] remoteExec [""spawn"", 0, false];" \n
+                                         "};" \n
+                                         "" \n
+                                         "if (fuel _chopper < 0.6) then " \n
+                                         "{" \n
+                                         "	[[]," \n
+                                         "	{" \n
+                                         "		enableRadio true;" \n
+                                         "		enableSentences true;" \n
+                                         "		sleep 2;" \n
+                                         "		NEO_CASradio sideRadio ""NEO_speech_14"";" \n
+                                         "		sleep 10;" \n
+                                         "		enableSentences false;" \n
+                                         "		enableRadio false;" \n
+                                         "	" \n
+                                         "	}] remoteExec [""spawn"", 0, false];" \n
+                                         "};" \n
+                                         "" \n
+                                         "if (NEO_coreLogic getVariable ""NEO_heavyStorm"") then " \n
+                                         "{" \n
+                                         "	[[]," \n
+                                         "	{" \n
+                                         "		enableRadio true;" \n
+                                         "		enableSentences true;" \n
+                                         "		sleep 2;" \n
+                                         "		NEO_CASradio sideRadio ""NEO_speech_15"";" \n
+                                         "		sleep 10;" \n
+                                         "		enableSentences false;" \n
+                                         "		enableRadio false;" \n
+                                         "	" \n
+                                         "	}] remoteExec [""spawn"", 0, false];" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "far">*/
+                                class far
+                                {
+                                        itemno = 10;
+                                        priority = 1.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_chopper distance _posCAS > 300" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setCaptive true;" \n
+                                         "{_x setCaptive true} forEach _crew;" \n
+                                         "_chopper setBehaviour ""CARELESS"";" \n
+                                         "_chopper setCombatMode ""BLUE"";" \n
+                                         "_chopper forceSpeed -1;" \n
+                                         "" \n
+                                         "_chopper doMove ([_posCas, 150, _dirCas] call BIS_fnc_relPos);" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ready">*/
+                                class ready
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"unitReady _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_dirCas = _dirCas + 45;" \n
+                                         "_chopper doMove ([_posCas, 150, _dirCas] call BIS_fnc_relPos);" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"[_chopper, " \n
+                         "{" \n
+                         "	private [""_chopper""];" \n
+                         "	_chopper = _this;" \n
+                         "	" \n
+                         "	enableRadio true;" \n
+                         "	enableSentences true;" \n
+                         "	sleep 2;" \n
+                         "" \n
+                         "	switch (true) do" \n
+                         "	{" \n
+                         "		case (NEO_coreLogic getVariable ""NEO_heavyStorm"") :" \n
+                         "		{" \n
+                         "			NEO_CASradio sideRadio ""NEO_speech_15"";" \n
+                         "		};" \n
+                         "		case (!someAmmo _chopper) :" \n
+                         "		{" \n
+                         "			NEO_CASradio sideRadio ""NEO_speech_13"";" \n
+                         "		};" \n
+                         "		case (fuel _chopper < 0.6) :" \n
+                         "		{" \n
+                         "			NEO_CASradio sideRadio ""NEO_speech_14"";" \n
+                         "		};" \n
+                         "		case (NEO_coreLogic getVariable ""NEO_baseRadio_casCancelled"") :" \n
+                         "		{" \n
+                         "			sleep 3;" \n
+                         "			NEO_CASradio sideRadio ""NEO_speech_16"";" \n
+                         "		};" \n
+                         "	};" \n
+                         "" \n
+                         "	sleep 10;" \n
+                         "	enableSentences false;" \n
+                         "	enableRadio false;" \n
+                         "	" \n
+                         "}] remoteExec [""spawn"", -2, false];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 1;
+                                        priority = 10.000000;
+                                        to="END2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _chopper" \n
+                                         "||" \n
+                                         "!canMove _chopper" \n
+                                         "||" \n
+                                         "!alive driver _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setDamage 1;" \n
+                                         "[_chopper] execVM ""main\pilot_rescue.sqf"";" \n
+                                         "NEO_coreLogic setVariable [""NEO_baseRadio_casDown"", true, true];" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "at_base">*/
+                                class at_base
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="END1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"unitReady _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"{" \n
+                                         "	deleteVehicle _x;" \n
+                                         "} forEach units group _chopper;" \n
+                                         "deleteVehicle _chopper;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END1">*/
+                class END1
+                {
+                        name = "END1";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"NEO_coreLogic setVariable [""NEO_baseRadio_casCalled"", false, true];" \n
+                         "NEO_coreLogic setVariable [""NEO_baseRadio_casOnMission"", false, true];" \n
+                         "NEO_coreLogic setVariable [""NEO_baseRadio_casCancelled"", false, true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__2">*/
+                class __2
+                {
+                        name = "__2";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dead">*/
+                                class dead
+                                {
+                                        itemno = 1;
+                                        priority = 10.000000;
+                                        to="END2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _chopper" \n
+                                         "||" \n
+                                         "!canMove _chopper" \n
+                                         "||" \n
+                                         "!alive driver _chopper" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setDamage 1;" \n
+                                         "[_chopper] execVM ""main\pilot_rescue.sqf"";" \n
+                                         "NEO_coreLogic setVariable [""NEO_baseRadio_casDown"", true, true];" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "near">*/
+                                class near
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_chopper distance _posCAS <= 300" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_chopper setCaptive false;" \n
+                                         "{_x setCaptive false} forEach _crew;" \n
+                                         "_chopper setBehaviour ""COMBAT"";" \n
+                                         "_chopper setCombatMode ""RED"";" \n
+                                         "_chopper forceSpeed _topSpeed;" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "EXIT">*/
+                class EXIT
+                {
+                        name = "EXIT";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "react">*/
+                class react
+                {
+                        name = "react";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "not_valid">*/
+                                class not_valid
+                                {
+                                        itemno = 14;
+                                        priority = 200.000000;
+                                        to="EXIT";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isServer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "valid">*/
+                                class valid
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="create";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="react";
+        finalStates[] =
+        {
+                "END2",
+                "END1",
+                "EXIT",
+        };
+};
+/*%FSM</COMPILE>*/
