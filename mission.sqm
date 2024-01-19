@@ -12,14 +12,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2187;
+		nextID=2191;
 	};
 	class Camera
 	{
-		pos[]={1360.2246,51.895775,1476.8131};
-		dir[]={-0.92368054,-0.18891129,-0.33350539};
-		up[]={-0.17771232,0.98198742,-0.06416484};
-		aside[]={-0.3396199,-9.7366137e-007,0.94062543};
+		pos[]={1363.1674,67.537315,1448.2194};
+		dir[]={-0.084070593,-0.85476738,-0.51228905};
+		up[]={-0.13841899,0.51905465,-0.84345913};
+		aside[]={-0.98687828,2.2703498e-006,0.16195703};
 	};
 };
 binarizationWanted=0;
@@ -101,8 +101,8 @@ addons[]=
 	"rhsgref_c_weapons",
 	"rhsusf_c_weapons",
 	"UK3CB_BAF_Weapons_Accessories",
-	"UK3CB_BAF_Weapons_Ammo_RHS",
 	"ace_compat_rhs_usf3",
+	"UK3CB_BAF_Weapons_Ammo_RHS",
 	"rhs_c_weapons",
 	"rhsusf_c_troops",
 	"UK3CB_Factions_ADP_B",
@@ -139,6 +139,7 @@ addons[]=
 	"A3_Structures_F_Enoch_Decals_Horizontal",
 	"rhs_c_heavyweapons",
 	"A3_Structures_F_Tank_Decals_Horizontal",
+	"ace_compat_rhs_usf3_arsenal",
 	"ace_optics",
 	"ace_compat_rhs_afrf3",
 	"A3_Characters_F_Mark",
@@ -171,7 +172,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=85;
+		items=86;
 		class Item0
 		{
 			className="A3_Structures_F_Mil";
@@ -454,17 +455,17 @@ class AddonsMetaData
 		};
 		class Item40
 		{
+			className="ace_compat_rhs_usf3";
+			name="ACE3 - RHS USAF Compatibility";
+			author="ACE-Team";
+			url="https://ace3.acemod.org/";
+		};
+		class Item41
+		{
 			className="UK3CB_BAF_Weapons_Ammo_RHS";
 			name="3CB BAF Weapons - Ammo(RHS)";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
-		};
-		class Item41
-		{
-			className="ace_compat_rhs_usf3";
-			name="ACE3 - RHS USF Compatibility";
-			author="ACE-Team";
-			url="https://ace3.acemod.org/";
 		};
 		class Item42
 		{
@@ -650,96 +651,101 @@ class AddonsMetaData
 		};
 		class Item70
 		{
+			className="ace_compat_rhs_usf3_arsenal";
+			name="ace_compat_rhs_usf3_arsenal";
+		};
+		class Item71
+		{
 			className="ace_optics";
 			name="ACE3 - Optics";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item71
+		class Item72
 		{
 			className="ace_compat_rhs_afrf3";
 			name="ACE3 - RHS AFRF Compatibility";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item72
+		class Item73
 		{
 			className="A3_Characters_F_Mark";
 			name="Arma 3 Marksmen - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item73
+		class Item74
 		{
 			className="CUP_Editor_Structures_Config";
 			name="CUP_Editor_Structures_Config";
 		};
-		class Item74
+		class Item75
 		{
 			className="CUP_Editor_Signs_Config";
 			name="CUP_Editor_Signs_Config";
 		};
-		class Item75
+		class Item76
 		{
 			className="CUP_CAStructures_E_Misc_Misc_Interier";
 			name="CUP_CAStructures_E_Misc_Misc_Interier";
 		};
-		class Item76
+		class Item77
 		{
 			className="A3_Props_F_Enoch";
 			name="Arma 3 Contact Platform - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item77
+		class Item78
 		{
 			className="A3_Data_F_Curator";
 			name="Arma 3 Zeus Update - Main Configuration";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item78
+		class Item79
 		{
 			className="ace_intelitems";
 			name="ACE3 - Intel Items";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item79
+		class Item80
 		{
 			className="A3_Missions_F_Oldman";
 			name="Arma 3 Old Man - Playable Content";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item80
+		class Item81
 		{
 			className="KNB_panel";
 			name="panel";
 			author="Katalam";
 		};
-		class Item81
+		class Item82
 		{
 			className="A3_Weapons_F_Orange";
 			name="Arma 3 Orange - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item82
+		class Item83
 		{
 			className="UK3CB_Factions_Equipment";
 			name="3CB Factions - Equipment";
 			author="3 Commando Brigade";
 			url="www.3commandobrigade.com";
 		};
-		class Item83
+		class Item84
 		{
 			className="A3_Structures_F_Exp";
 			name="Arma 3 Apex - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item84
+		class Item85
 		{
 			className="CUP_CAMisc";
 			name="CUP_CAMisc";
@@ -768,6 +774,9 @@ randomSeed=5886257;
 class ScenarioData
 {
 	wreckRemovalMaxTime=3600;
+};
+class CustomAttributes
+{
 };
 class Mission
 {
@@ -10144,7 +10153,7 @@ class Mission
 					};
 					id=80;
 					type="Land_Bandage_F";
-					atlOffset=0.99488449;
+					atlOffset=1.0167885;
 				};
 				class Item506
 				{
@@ -10161,7 +10170,7 @@ class Mission
 					};
 					id=81;
 					type="Land_Bandage_F";
-					atlOffset=0.99493408;
+					atlOffset=1.0168381;
 				};
 				class Item507
 				{
@@ -18522,7 +18531,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="[[[[],[]],[[],[]],[[""ACE_fieldDressing"",""ACE_tourniquet"",""ACE_morphine"",""ACE_epinephrine"",""ACE_bloodIV"",""ACE_bloodIV_500"",""ACE_bloodIV_250"",""ACE_bodyBag""],[90,90,40,20,25,25,25,30]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""ACE_fieldDressing"",""ACE_tourniquet"",""ACE_morphine"",""ACE_epinephrine"",""ACE_bloodIV"",""ACE_bloodIV_500"",""ACE_bloodIV_250"",""ACE_bodyBag"",""ACE_packingBandage"",""ACE_elasticBandage"",""ACE_adenosine"",""ACE_quikclot"",""ACE_surgicalKit""],[25,90,40,20,25,25,25,30,25,25,20,25,2]],[[],[]]],false]";
 						};
 					};
 				};
@@ -19916,6 +19925,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -19992,11 +20002,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -20104,6 +20124,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="rhsusf_acc_anpeq15side_bk";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -20174,7 +20195,7 @@ class Mission
 										isBackpack=1;
 										class MagazineCargo
 										{
-											items=4;
+											items=3;
 											class Item0
 											{
 												name="UK3CB_BAF_SmokeShellYellow";
@@ -20183,17 +20204,11 @@ class Mission
 											};
 											class Item1
 											{
-												name="rhs_30Rnd_762x39mm_Savz58";
-												count=6;
-												ammoLeft=30;
-											};
-											class Item2
-											{
 												name="rhs_mag_m67";
 												count=1;
 												ammoLeft=1;
 											};
-											class Item3
+											class Item2
 											{
 												name="UK3CB_BAF_SmokeShell";
 												count=1;
@@ -20202,21 +20217,56 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=3;
+											items=10;
 											class Item0
 											{
-												name="ACE_epinephrine";
-												count=1;
+												name="ACE_elasticBandage";
+												count=20;
 											};
 											class Item1
 											{
-												name="ACE_morphine";
+												name="ACE_surgicalKit";
 												count=1;
 											};
 											class Item2
 											{
-												name="ACE_fieldDressing";
+												name="ACE_tourniquet";
 												count=5;
+											};
+											class Item3
+											{
+												name="ACE_epinephrine";
+												count=3;
+											};
+											class Item4
+											{
+												name="ACE_morphine";
+												count=5;
+											};
+											class Item5
+											{
+												name="ACE_bloodIV_500";
+												count=4;
+											};
+											class Item6
+											{
+												name="ACE_bodyBag";
+												count=1;
+											};
+											class Item7
+											{
+												name="ACE_splint";
+												count=2;
+											};
+											class Item8
+											{
+												name="ACE_suture";
+												count=2;
+											};
+											class Item9
+											{
+												name="ACE_packingBandage";
+												count=20;
 											};
 										};
 									};
@@ -20284,6 +20334,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="rhsusf_acc_anpeq15side_bk";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -20354,7 +20405,7 @@ class Mission
 										isBackpack=1;
 										class MagazineCargo
 										{
-											items=4;
+											items=3;
 											class Item0
 											{
 												name="UK3CB_BAF_SmokeShellYellow";
@@ -20363,17 +20414,11 @@ class Mission
 											};
 											class Item1
 											{
-												name="rhs_30Rnd_762x39mm_Savz58";
-												count=6;
-												ammoLeft=30;
-											};
-											class Item2
-											{
 												name="rhs_mag_m67";
 												count=1;
 												ammoLeft=1;
 											};
-											class Item3
+											class Item2
 											{
 												name="UK3CB_BAF_SmokeShell";
 												count=1;
@@ -20382,21 +20427,56 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=3;
+											items=10;
 											class Item0
 											{
-												name="ACE_epinephrine";
-												count=1;
+												name="ACE_morphine";
+												count=10;
 											};
 											class Item1
 											{
-												name="ACE_morphine";
-												count=1;
+												name="ACE_elasticBandage";
+												count=20;
 											};
 											class Item2
 											{
-												name="ACE_fieldDressing";
+												name="ACE_bloodIV_500";
 												count=5;
+											};
+											class Item3
+											{
+												name="ACE_epinephrine";
+												count=3;
+											};
+											class Item4
+											{
+												name="ACE_splint";
+												count=2;
+											};
+											class Item5
+											{
+												name="ACE_surgicalKit";
+												count=1;
+											};
+											class Item6
+											{
+												name="ACE_suture";
+												count=2;
+											};
+											class Item7
+											{
+												name="ACE_tourniquet";
+												count=5;
+											};
+											class Item8
+											{
+												name="ACE_bodyBag";
+												count=1;
+											};
+											class Item9
+											{
+												name="ACE_packingBandage";
+												count=20;
 											};
 										};
 									};
@@ -20479,6 +20559,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -20555,11 +20636,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -20666,6 +20757,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -20741,11 +20833,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -20847,6 +20949,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -20918,11 +21021,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=2;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -21030,6 +21143,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -21089,11 +21203,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -21391,6 +21515,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -21456,11 +21581,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -21586,6 +21721,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -21661,11 +21797,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -21766,6 +21912,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -21825,11 +21972,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -21939,6 +22096,7 @@ class Mission
 									class primaryWeapon
 									{
 										name="rhs_weap_pkp";
+										firemode="rhs_weap_pkp:FullAuto";
 										class primaryMuzzleMag
 										{
 											name="rhs_100Rnd_762x54mmR";
@@ -22016,11 +22174,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -22142,6 +22310,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -22218,11 +22387,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=2;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -22330,6 +22509,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -22405,11 +22585,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -22511,6 +22701,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -22582,11 +22773,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -22700,6 +22901,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -22759,11 +22961,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -22874,6 +23086,7 @@ class Mission
 									class primaryWeapon
 									{
 										name="rhs_weap_pkp";
+										firemode="rhs_weap_pkp:FullAuto";
 										class primaryMuzzleMag
 										{
 											name="rhs_100Rnd_762x54mmR";
@@ -22951,11 +23164,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -23063,6 +23286,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -23128,11 +23352,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -23258,6 +23492,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -23333,11 +23568,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -23439,6 +23684,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -23498,11 +23744,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -23613,6 +23869,7 @@ class Mission
 									class primaryWeapon
 									{
 										name="rhs_weap_pkp";
+										firemode="rhs_weap_pkp:FullAuto";
 										class primaryMuzzleMag
 										{
 											name="rhs_100Rnd_762x54mmR";
@@ -23690,11 +23947,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -23816,6 +24083,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -23892,11 +24160,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_packingBandage";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -24004,6 +24282,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -24079,11 +24358,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -24185,6 +24474,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -24256,11 +24546,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -24374,6 +24674,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -24433,11 +24734,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -24548,6 +24859,7 @@ class Mission
 									class primaryWeapon
 									{
 										name="rhs_weap_pkp";
+										firemode="rhs_weap_pkp:FullAuto";
 										class primaryMuzzleMag
 										{
 											name="rhs_100Rnd_762x54mmR";
@@ -24625,11 +24937,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_tourniquet";
+												count=1;
+											};
+											class Item2
+											{
+												name="ACE_quikclot";
+												count=3;
 											};
 										};
 									};
@@ -24737,6 +25059,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -24802,11 +25125,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -24932,6 +25265,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -25031,7 +25365,7 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=3;
+											items=4;
 											class Item0
 											{
 												name="ACE_epinephrine";
@@ -25045,7 +25379,12 @@ class Mission
 											class Item2
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item3
+											{
+												name="ACE_quikclot";
+												count=3;
 											};
 										};
 									};
@@ -25113,6 +25452,7 @@ class Mission
 										optics="rhsusf_acc_T1_low_fwd";
 										flashlight="UK3CB_BAF_LLM_Flashlight_Black";
 										underBarrel="rhsusf_acc_rvg_blk";
+										firemode="rhs_weap_savz58v_ris:Single";
 										class primaryMuzzleMag
 										{
 											name="rhs_30Rnd_762x39mm_Savz58";
@@ -25172,11 +25512,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -25287,6 +25637,7 @@ class Mission
 									class primaryWeapon
 									{
 										name="rhs_weap_pkp";
+										firemode="rhs_weap_pkp:FullAuto";
 										class primaryMuzzleMag
 										{
 											name="rhs_100Rnd_762x54mmR";
@@ -25364,11 +25715,21 @@ class Mission
 										};
 										class ItemCargo
 										{
-											items=1;
+											items=3;
 											class Item0
 											{
 												name="ACE_fieldDressing";
-												count=5;
+												count=3;
+											};
+											class Item1
+											{
+												name="ACE_quikclot";
+												count=3;
+											};
+											class Item2
+											{
+												name="ACE_tourniquet";
+												count=1;
 											};
 										};
 									};
@@ -25461,7 +25822,7 @@ class Mission
 				};
 			};
 			id=1825;
-			atlOffset=-26.799999;
+			atlOffset=-0.00075912476;
 		};
 		class Item68
 		{
@@ -28901,14 +29262,13 @@ class Mission
 				angles[]={0.0024958209,4.6703091,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				disableSimulation=1;
 			};
 			id=2018;
 			type="Land_PortableCabinet_01_closed_olive_F";
-			atlOffset=0.028114319;
+			atlOffset=0.18930817;
 			class CustomAttributes
 			{
 				class Attribute0
