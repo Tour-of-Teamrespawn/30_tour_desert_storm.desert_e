@@ -1,5 +1,5 @@
 /* 
-###MISSION_VERSION 1.5
+###MISSION_VERSION 1.6
 */
 waituntil { !isNil { BIS_fnc_init } };
 

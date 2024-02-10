@@ -8,7 +8,7 @@ class Header
 
 author = "Kain_Lowsta";
 onLoadName = "30 [Tour] Desert Storm";
-briefingName = "30 [Tour] Desert Storm v1.5";
+briefingName = "30 [Tour] Desert Storm v1.6";
 OnLoadMission = "Defend F.O.B Storm";
 OnLoadMissionTime = false;
 
